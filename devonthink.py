@@ -33,7 +33,7 @@ def readable_path(path):
         readable = readable[1:]
     if path.endswith('/'):
         readable = readable[:-1]
-    return re.sub(r'(?<!\\)/', '▶️', readable)
+    return re.sub(r'(?<!\\)/', '→', readable)
 
 def get_type(r):
     if r['location'].startswith('/Tags'):
@@ -68,7 +68,6 @@ def to_lb_item(record, candidate_uuids, returnKeyToBrowseGroup=True):
     record = {key: record.get(key) for key in keys}
     potential_icon = get_icon(record)
     actionArgument = json.dumps({
-        'path': record['path'],
         'pickedRecord': record,
         'pickedUuid': record['uuid'],
         'candidateUuids': candidate_uuids,
@@ -110,12 +109,13 @@ class DEVONthink:
         pass
         
     def activate(self):
-        cmd = ['osascript', '-e', 'tell application "DEVONthink 3" to activate']
+        cmd = ['osascript', '-e', 'tell application "DEVONthink" to activate']
         subprocess.call(cmd)
 
     def reveal_item(self, uuid, is_smart_group=False):
         self.activate()
-        cmd = ['/usr/bin/open', self.get_reference_url(uuid, is_smart_group) + '?reveal=1']
+        cmd = ['/usr/bin/open', self.get_reference_url(uuid, is_smart_group)]
+        # cmd = ['/usr/bin/osascript', 'reveal.scpt', uuid]
         subprocess.call(cmd)
 
     def open_item(self, uuid, is_smart_group=False):

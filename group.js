@@ -1,5 +1,5 @@
 function run(uuid) {
-    let dtp = Application("DEVONthink 3");
+    let dtp = Application("DEVONthink");
 
     let groupUuid = uuid.toString()
     let group = dtp.getRecordWithUuid(groupUuid)

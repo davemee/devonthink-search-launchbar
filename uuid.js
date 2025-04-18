@@ -1,5 +1,5 @@
 function run(argv) {
-    let dtp = Application("DEVONthink 3");
+    let dtp = Application("DEVONthink");
     let records = []
     for (let uuid of argv) {
         let r = dtp.getRecordWithUuid(uuid)

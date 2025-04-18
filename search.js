@@ -35,7 +35,7 @@ function run(argv) {
 }
 
 function searchOnce(jsonArg) {
-    let dtp = Application("DEVONthink 3");
+    let dtp = Application("DEVONthink");
     let field = jsonArg.field;
     let dbUuids = jsonArg.dbUuids;
     let query = jsonArg.query;

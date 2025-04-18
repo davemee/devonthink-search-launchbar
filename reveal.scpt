@@ -1,5 +1,5 @@
 on run argv
-    tell application "DEVONthink 3"
+    tell application "DEVONthink"
         local theRecord, theParent
         set theUuid to item 1 of argv
         set theRecord to get record with uuid theUuid
